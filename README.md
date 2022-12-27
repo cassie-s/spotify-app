@@ -1,8 +1,13 @@
-# Spotify Connected App
+# Spotify Profile
+  ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+  ## Description
+  This app allows you to get your Spotify top artists and tracks, and sort your playlists by things like energy and danceability. This was built with The Spotify API, React, Express, and Axios. 
 
-End product of the "Build a Spotify Connected App" newline course
 
-## Local Installation & Set Up
+  ![Screenshot of Application](screenshot.png)
+
+
+## Installation
 
 1. Register a Spotify App in your [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/) and add `http://localhost:8888/callback` as a Redirect URI in the app settings
 
@@ -28,29 +33,16 @@ End product of the "Build a Spotify Connected App" newline course
     npm start
     ```
 
-## Deploying to Heroku with Git
+## Credits
 
-1. Create a [Heroku](https://www.heroku.com/) app
+This app was built following a tutorial by Brittany Chiang. (https://www.newline.co/courses/build-a-spotify-connected-app)
 
-2. Add your Heroku app as a git remote
+  ## License
+    
+  This project uses  the [MIT](https://opensource.org/licenses/MIT) license.
 
-    ```shell
-    heroku git:remote -a your-app-name
-    ```
 
-3. Add `http://your-app-name.herokuapp.com/callback` as a Redirect URI in your Spotify app's settings
-
-4. In your app's **Settings** tab in the Heroku dashboard, add [config vars](https://devcenter.heroku.com/articles/config-vars#using-the-heroku-dashboard).
-
-   Based on the values in your `.env` file, the `CLIENT_ID`, `CLIENT_SECRET`, `REDIRECT_URI`, and `FRONTEND_URI` key value pairs. Make sure to replace the `localhost` URLs with your heroku app's URL.
-
-   ```env
-   REDIRECT_URI: http://your-app-name.herokuapp.com/callback
-   FRONTEND_URI: http://your-app-name.herokuapp.com
-   ```
-
-5. Push to Heroku
-
-    ```shell
-    git push heroku main
-    ```
+  ## Questions
+  Reach out via email or GitHub.  
+  cassie.s.simpson@gmail.com  
+  [cassie-s](https://github.com/cassie-s/)
