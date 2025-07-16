@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { catchErrors } from '../utils'
-import { getPlaylistById, getAudioFeaturesForTracks } from '../spotify';
+import { getPlaylistById } from '../spotify';
 import { TrackList, SectionWrapper, Loader } from '../components';
 import { StyledHeader, StyledDropdown } from '../styles';
 
@@ -48,11 +48,8 @@ const Playlist = () => {
         // Also update the audioFeatures state variable using the track IDs
         const fetchAudioFeatures = async () => {
           const ids = tracksData.items.map(({ track }) => track.id).join(',');
-          const { data } = await getAudioFeaturesForTracks(ids);
           setAudioFeatures(audioFeatures => ([
-            ...audioFeatures ? audioFeatures : [],
-            ...data['audio_features']
-          ]));
+            ...audioFeatures ? audioFeatures : []          ]));
         };
         catchErrors(fetchAudioFeatures());
     
@@ -124,21 +121,6 @@ const sortedTracks = useMemo(() => {
 
           <main>
             <SectionWrapper title="Playlist" breadcrumb={true}>
-            <StyledDropdown active={!!sortValue}>
-                <label className="sr-only" htmlFor="order-select">Sort tracks</label>
-                <select
-                  name="track-order"
-                  id="order-select"
-                  onChange={e => setSortValue(e.target.value)}
-                  >
-                  <option value="">Sort tracks</option>
-                  {sortOptions.map((option, i) => (
-                    <option value={option} key={i}>
-                      {`${option.charAt(0).toUpperCase()}${option.slice(1)}`}
-                    </option>
-                  ))}
-                </select>
-              </StyledDropdown>
               {sortedTracks ? (
                 <TrackList tracks={sortedTracks} />
               ) : (
